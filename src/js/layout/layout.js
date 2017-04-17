@@ -27,18 +27,25 @@ export default class AkseliLayout extends React.Component {
       					</Navbar.Brand>
     				</Navbar.Header>
 					<Nav>
-						<NavItem active={true} eventKey={1} href="/controldevices">Hallintalaitteet</NavItem>
-						<NavDropdown eventKey={2} title="Laitteet" id="basic-nav-dropdown">
-        					<MenuItem eventKey={2.1}>Cec laitteet</MenuItem>
-        					<MenuItem eventKey={2.2}>Telnet laitteet</MenuItem>
-							<MenuItem eventKey={2.3}>Wol laitteet</MenuItem>
+						<NavDropdown eventKey={3} title="Hallintalaitteet">
+							<MenuItem eventKey={3.1} href="/controldevices/pentit">Pentit</MenuItem>
 						</NavDropdown>
-     					<NavItem eventKey={3} href="/timers">Ajastimet</NavItem>
+						<NavDropdown eventKey={2} title="Laitteet">
+        					<MenuItem eventKey={2.1} href="/devices/CecDevices">Cec laitteet</MenuItem>
+        					<MenuItem eventKey={2.2} href="/devices/TelnetDevices">Telnet laitteet</MenuItem>
+							<MenuItem eventKey={2.3} href="/devices/WolDevices">Wol laitteet</MenuItem>
+						</NavDropdown>
+						<NavDropdown eventKey={3} title="Ajastimet">
+							<MenuItem eventKey={3.1} href="/timers/weeklytimers">Viikkoajastimet</MenuItem>
+						</NavDropdown>
 					</Nav>
 					<Nav pullRight>
         				<NavItem eventKey={1} href="/login">Kirjaudu</NavItem>
       				</Nav>
 				</Navbar>
+				<div className="container">
+					{this.props.children}
+				</div>
 			</div>
 		)
 	}

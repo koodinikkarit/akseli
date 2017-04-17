@@ -6,7 +6,10 @@ import {
 } from 'react-router-dom'
 
 import {
-	Devices
+	Devices,
+	CecDevices,
+	TelnetDevices,
+	WolDevices
 } from "./devices";
 
 import {
@@ -14,12 +17,14 @@ import {
 } from "./frontpage";
 
 import {
-	Timers
+	Timers,
+	WeeklyTimers
 } from "./timers";
 
 
 import {
-	ControlDevices
+	ControlDevices,
+	Pentit
 } from "./controldevices";
 
 // Route config
@@ -30,11 +35,23 @@ const routes = [
 		component: FrontPage,
 	},
 	{
-		path: "/devices",
-		component: Devices
+		path: "/controldevices/pentit",
+		component: Pentit
 	},
 	{
-		path: "/timers",
+		path: "/devices/CecDevices",
+		component: CecDevices
+	},
+	{
+		path: "/devices/TelnetDevices",
+		component: TelnetDevices
+	},
+	{
+		path: "/devices/WolDevices",
+		component: WolDevices
+	},
+	{
+		path: "/timers/weeklytimers",
 		component: Timers
 	},
 	{
@@ -52,7 +69,7 @@ const RouteWithSubRoutes = (route) => (
   )}/>
 )
 
-export default () => (
+export default (
 	<Router>
 		<div>
 			{routes.map((route, i) => (

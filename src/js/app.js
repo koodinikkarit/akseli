@@ -4,19 +4,16 @@ import {
     Router,
     browserHistory
 } from 'react-router';
+import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from 'react-router-dom'
+import client from "./client";
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import  {
-    Layout
-} from "./layout";
 
 import routes from "./routes";
 
-injectTapEventPlugin();
-console.log(routes());
-
 ReactDOM.render(
-    routes(),
+    <ApolloProvider client={client}>
+        {routes}
+    </ApolloProvider>,
     document.getElementById("root")
 );

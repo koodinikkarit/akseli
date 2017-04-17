@@ -99,6 +99,10 @@ function ssr() {
 		res.redirect(302, "http://localhost:11111/");
 	});
 
+    app.use("/api", (req, res) => {
+
+    });
+
     app.use((req, res) => {
 		//console.log(req.body);
 		//console.log("\n\n\n\nroutes", "\n\n\n routes \n\n\n", routes, "\n\n\n graphql \n\n", graphql, "\n\n schema \n\n", schema, "\n\n\n\n\n");
