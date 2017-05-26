@@ -7,9 +7,12 @@ import {
 
 import {
 	Devices,
-	CecDevices,
+	CecDeviceList,
 	TelnetDevices,
-	WolDevices
+	WolDevices,
+	ComputerList,
+	Computer,
+	Keijo
 } from "./devices";
 
 import {
@@ -40,7 +43,11 @@ const routes = [
 	},
 	{
 		path: "/devices/CecDevices",
-		component: CecDevices
+		component: CecDeviceList
+	},
+	{
+		path: "/devices/keijo/:id",
+		component: Keijo
 	},
 	{
 		path: "/devices/TelnetDevices",
@@ -49,6 +56,14 @@ const routes = [
 	{
 		path: "/devices/WolDevices",
 		component: WolDevices
+	},
+	{
+		path: "/devices/computers",
+		component: ComputerList
+	},
+	{
+		path: "/devices/computer/:id",
+		component: Computer
 	},
 	{
 		path: "/timers/weeklytimers",

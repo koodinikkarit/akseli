@@ -3,5 +3,5 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
 export default new ApolloClient({
     dataIdFromObject: o => `${o.__typename}-${o.id},`,
-    networkInterface: createNetworkInterface({ uri: `http://localhost:9595/graphql` })
+    networkInterface: createNetworkInterface({ uri: `http://${location.hostname}:${location.port}/api` })
 });

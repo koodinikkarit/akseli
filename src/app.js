@@ -5,6 +5,9 @@ import WebpackMiddleware from "webpack-dev-middleware";
 import React from 'react';
 import ReactDOMServer from "react-dom/server";
 import bodyParser from 'body-parser';
+import request from "request";
+import session from "express-session";
+
 
 import {
 	PageFrame
@@ -30,6 +33,11 @@ process.argv.forEach(function (arg, index) {
     }
 });
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -51,7 +59,7 @@ var module = {
 
 var output = {
 	filename: '[name].js',
-	path: './public/'
+	path: path.join(__dirname, "./public/") 
 };
 
 if (development) {
@@ -96,15 +104,24 @@ if (development) {
 
 function ssr() {
 	app.get("/login", (req, res) => {
-		res.redirect(302, "http://localhost:11111/");
+		res.redirect(302, "http://localhost:7070?return_url=http://localhost:11111/create_session");
 	});
 
-    app.use("/api", (req, res) => {
+    app.get("/create_session", (req, res) => {
+        console.log("create_session", req.sessionID);
+        console.log("token ", req.query.token);
+        res.redirect(302, "http://localhost:11111");
+    });
 
+    app.use("/api", (req, res) => {
+        request.post("http://localhost:9595/", { form: req.body}, (err, data) => {
+            res.end(data.body);
+        });
     });
 
     app.use((req, res) => {
-		//console.log(req.body);
+		console.log(req.sessionID);
+
 		//console.log("\n\n\n\nroutes", "\n\n\n routes \n\n\n", routes, "\n\n\n graphql \n\n", graphql, "\n\n schema \n\n", schema, "\n\n\n\n\n");
         // match({ routes, location: req.originalUrl }, (error, redirectLocation, renderProps) => {
         //     const client = new ApolloClient({
