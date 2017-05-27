@@ -27,8 +27,9 @@ export default class AkseliLayout extends React.Component {
       					</Navbar.Brand>
     				</Navbar.Header>
 					<Nav>
-						<NavDropdown eventKey={3} title="Hallintalaitteet">
-							<MenuItem eventKey={3.1} href="/controldevices/pentit">Pentit</MenuItem>
+						<NavDropdown eventKey={1} title="Toimenpiteet">
+							<MenuItem eventKey={1.1} href="/actions/cecactions">Cec laitteet</MenuItem>
+							<MenuItem eventKey={1.1} href="/actions/wolactions">Wol devices</MenuItem>
 						</NavDropdown>
 						<NavDropdown eventKey={2} title="Laitteet">
         					<MenuItem eventKey={2.1} href="/devices/CecDevices">Cec laitteet</MenuItem>
