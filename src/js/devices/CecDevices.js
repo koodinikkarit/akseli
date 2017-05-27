@@ -15,7 +15,7 @@ import Collapse from "react-bootstrap/lib/Collapse";
 
 import AddCecController from "./AddCecController";
 
-export class CecDeviceList extends React.Component {
+export class CecDevices extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +24,6 @@ export class CecDeviceList extends React.Component {
     }
 
     render() {
-        console.log("props", this.props.keijos);
         return (
 			<Layout>
                 {!this.state.addingCecController &&
@@ -78,4 +77,4 @@ query {
         keijos,
         loading
     })
-})(CecDeviceList);
+})(CecDevices);
