@@ -40,7 +40,7 @@ export default class extends React.Component {
 				}}
 				onBlur={e => {
 					this.setState({ focus: false });
-					if (this.props.onChange) {
+					if (this.props.onChange && this.state.value !== this.props.value) {
 						clearTimeout(this.state.timer);
 						this.props.onChange(this.state.value);
 					}
