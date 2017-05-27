@@ -6,10 +6,14 @@ import {
 } from 'react-router-dom'
 
 import {
+	CecActions,
+	WolActions
+} from "./actions";
+
+import {
 	Devices,
-	CecDeviceList,
+	CecDevices,
 	TelnetDevices,
-	WolDevices,
 	ComputerList,
 	Computer,
 	Keijo
@@ -38,12 +42,20 @@ const routes = [
 		component: FrontPage,
 	},
 	{
+		path: "/actions/cecactions",
+		component: CecActions
+	},
+	{
+		path: "/actions/wolactions",
+		component: WolActions
+	},
+	{
 		path: "/controldevices/pentit",
 		component: Pentit
 	},
 	{
 		path: "/devices/CecDevices",
-		component: CecDeviceList
+		component: CecDevices
 	},
 	{
 		path: "/devices/keijo/:id",
@@ -52,10 +64,6 @@ const routes = [
 	{
 		path: "/devices/TelnetDevices",
 		component: TelnetDevices
-	},
-	{
-		path: "/devices/WolDevices",
-		component: WolDevices
 	},
 	{
 		path: "/devices/computers",
