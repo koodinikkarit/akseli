@@ -16,7 +16,9 @@ import {
 	TelnetDevices,
 	ComputerList,
 	Computer,
-	Keijo
+	Keijo,
+	PenttiDevices,
+	PenttiDevice
 } from "./devices";
 
 import {
@@ -72,6 +74,14 @@ const routes = [
 	{
 		path: "/devices/computer/:id",
 		component: Computer
+	},
+	{
+		path: "/devices/penttidevices",
+		component: PenttiDevices
+	},
+	{
+		path: "/devices/penttidevice/:id",
+		component: PenttiDevice
 	},
 	{
 		path: "/timers/weeklytimers",

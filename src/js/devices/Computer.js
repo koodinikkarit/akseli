@@ -10,7 +10,7 @@ import {
 } from "../layout";
 
 import {
-	FieldGroup
+	TextInputGroup
 } from "../form";
 
 
@@ -29,7 +29,7 @@ export class Computer extends React.Component {
 			<Layout>
 				{!this.props.loading &&
 				<Form>
-					<FieldGroup
+					<TextInputGroup
 					 type="text"
 					 label="Nimi"
 					 placeholder="Nimi"
@@ -38,7 +38,7 @@ export class Computer extends React.Component {
 						 id: this.props.computer.id,
 						 name: value
 					 })} />
-					<FieldGroup
+					<TextInputGroup
 					 type="text"
 					 label="Mac"
 					 placeholder="Mac"

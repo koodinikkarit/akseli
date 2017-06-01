@@ -36,6 +36,7 @@ export default class AkseliLayout extends React.Component {
         					<MenuItem eventKey={2.2} href="/devices/TelnetDevices">Telnet laitteet</MenuItem>
 							<MenuItem eventKey={2.3} href="/devices/WolDevices">Wol laitteet</MenuItem>
 							<MenuItem eventKey={2.4} href="/devices/computers">Tietokoneet</MenuItem>
+							<MenuItem eventKey={2.5} href="/devices/penttidevices">Pentit</MenuItem>
 						</NavDropdown>
 						<NavDropdown eventKey={3} title="Ajastimet">
 							<MenuItem eventKey={3.1} href="/timers/weeklytimers">Viikkoajastimet</MenuItem>

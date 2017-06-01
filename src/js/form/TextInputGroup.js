@@ -4,7 +4,7 @@ import ControlLabel from "react-bootstrap/lib/ControlLabel";
 
 import SaveFormControl from "./SaveFormControl";
 
-export default function FieldGroup({ id, label, help, value, ...props }) {
+export default function TextInputGroup({ id, label, help, value, ...props }) {
   return (
     <FormGroup controlId={id}>
       <ControlLabel>{label}</ControlLabel>

@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 import Button from "react-bootstrap/lib/Button";
 
 import {
-    FieldGroup
+    TextInputGroup
 } from "../form";
 
 
@@ -21,9 +21,9 @@ export class CreateComputer extends React.Component {
     render() {
         return (
             <div>
-                <FieldGroup label="Nimi" value={this.state.name}
+                <TextInputGroup label="Nimi" value={this.state.name}
                  onChange={value => this.setState({ name: value })} />
-                <FieldGroup label="Mac" value={this.state.mac}
+                <TextInputGroup label="Mac" value={this.state.mac}
                  onChange={value => this.setState({ mac: value })} />
                 <Button
                  onClick={e => {

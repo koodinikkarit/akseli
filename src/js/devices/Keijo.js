@@ -10,7 +10,7 @@ import {
 } from "../layout";
 
 import {
-	FieldGroup
+	TextInputGroup
 } from "../form";
 
 import Form from "react-bootstrap/lib/Form";
@@ -27,21 +27,21 @@ export class Keijo extends React.Component {
 			<Layout>
 				{!this.props.loading &&
 				<Form>
-					<FieldGroup label="Nimi" value={this.props.keijo.name}
+					<TextInputGroup label="Nimi" value={this.props.keijo.name}
 					 onChange={value => {
 						 this.props.editKeijo({
 							 keijoId: this.props.keijo.id,
 							 name: value
 						 });
 					 }} />
-					<FieldGroup label="Ip" value={this.props.keijo.ip}
+					<TextInputGroup label="Ip" value={this.props.keijo.ip}
 					 onChange={value => {
 						 this.props.editKeijo({
 							 keijoId: this.props.keijo.id,
 							 ip: value
 						 });
 					 }} />
-					<FieldGroup label="Port" value={this.props.keijo.port}
+					<TextInputGroup label="Port" value={this.props.keijo.port}
 					 onChange={value => {
 						 this.props.editKeijo({
 							 keijoId: this.props.keijo.id,

@@ -6,7 +6,7 @@ import Form from "react-bootstrap/lib/Form";
 import Button from "react-bootstrap/lib/Button";
 
 import {
-	FieldGroup
+	TextInputGroup
 } from "../form";
 
 export class AddCecController extends React.Component {
@@ -22,11 +22,11 @@ export class AddCecController extends React.Component {
 	render() {
 		return (
 			<Form>
-				<FieldGroup label="Nimi" value={this.state.name}
+				<TextInputGroup label="Nimi" value={this.state.name}
 				 onChange={value => this.setState({ name: value })} />
-				<FieldGroup label="Ip" value={this.state.ip}
+				<TextInputGroup label="Ip" value={this.state.ip}
 				 onChange={value => this.setState({ ip: value })} />
-				<FieldGroup label="Port" value={this.state.port}
+				<TextInputGroup label="Port" value={this.state.port}
 				 onChange={value => this.setState({ port: value })} />
 				<Button
                  onClick={e => {
