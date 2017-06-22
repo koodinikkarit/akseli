@@ -32,6 +32,9 @@ export class PenttiDevice extends React.Component {
 					{!this.props.loading &&
 					<Form>
 						<TextGroup label="ip" text={this.props.pentti.ip} />
+						{this.props.pentti.buttons.map(p => (
+							<h1>{p.id}</h1>
+						))}
 					</Form>}
 				</div>
 			</Layout>
@@ -46,6 +49,10 @@ export default compose(
 		pentti : fetchPenttiById(penttiId: $penttiId) {
 			id
 			ip
+			buttons {
+				id
+				penttiId
+			}
 		}
 	}`, {
 		options: (ownProps) => {

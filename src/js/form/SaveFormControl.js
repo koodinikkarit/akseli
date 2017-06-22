@@ -24,6 +24,7 @@ export default class extends React.Component {
 		return (
 			<FormControl
 				value={this.state.value}
+				placeholder={this.props.placeholder}
 				onChange={e => {
 					this.setState({
 						value: e.target.value

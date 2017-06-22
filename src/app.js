@@ -48,13 +48,27 @@ var entry = {
 };
 
 var module = {
-	loaders: [
+	rules: [
 		{
 			exclude: /node_modules/,
 			loader: 'babel-loader',
 			test: /\.js$/,
 		},
-	],
+        {
+            test: /\.css$/,
+            use: [
+                {
+                    loader: "style-loader"
+                },
+                {
+                    loader: "css-loader",
+                    options: {
+                        modules: true
+                    }
+                }
+            ]
+        }
+	]
 };
 
 var output = {
@@ -70,7 +84,7 @@ if (development) {
         module: module,
         output: output
     }), {
-        contentBase: './public/',
+        contentBase: '../public/',
         publicPath: '/js/',
         stats: "errors-only"
      }));
@@ -90,15 +104,15 @@ if (development) {
 		output: output
 	});
 
-	// compiler.run(function (err, stats) {
-    //      app.use("/api", graphQLHTTP({
-    //          schema, graphiql: false, pretty: false
-    //      }))
-    //      app.get("/js/app.js", function (req, res, next) {
-    //          res.sendFile(__dirname + '/public/app.js');
-    //      });
-    //      ssr();
-    // });
+	compiler.run(function (err, stats) {
+         app.use("/api", graphQLHTTP({
+             schema, graphiql: false, pretty: false
+         }))
+         app.get("/js/app.js", function (req, res, next) {
+             res.sendFile(__dirname + '/public/app.js');
+         });
+         ssr();
+    });
 	ssr();
 }
 
@@ -115,7 +129,12 @@ function ssr() {
 
     app.use("/api", (req, res) => {
         request.post("http://localhost:9595/", { form: req.body}, (err, data) => {
-            res.end(data.body);
+            if (!data) {
+                console.log("500 service unvaivable");
+                res.writeHead(500);
+            } else {
+                res.end(data.body);
+            }
         });
     });
 

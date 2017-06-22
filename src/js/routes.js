@@ -11,15 +11,31 @@ import {
 } from "./actions";
 
 import {
+	ExecutorsList,
+	Executor
+} from "./executor";
+
+import {
 	Devices,
 	CecDevices,
 	TelnetDevices,
-	ComputerList,
 	Computer,
 	Keijo,
 	PenttiDevices,
 	PenttiDevice
 } from "./devices";
+
+import {
+	ArttuDevicesList,
+	KeijoDevicesList,
+	PenttiDevicesList,
+	SeveriDevicesList
+} from "./ConnectedDevices"
+
+import {
+	ComputersList,
+	DevicesList
+} from "./CreatedDevices";
 
 import {
 	FrontPage
@@ -56,6 +72,14 @@ const routes = [
 		component: Pentit
 	},
 	{
+		path: "/executors",
+		component: ExecutorsList
+	},
+	{
+		path: "/executor",
+		component: Executor
+	},
+	{
 		path: "/devices/CecDevices",
 		component: CecDevices
 	},
@@ -69,7 +93,11 @@ const routes = [
 	},
 	{
 		path: "/devices/computers",
-		component: ComputerList
+		component: ComputersList
+	},
+	{
+		path: "/devices/devices",
+		component: DevicesList
 	},
 	{
 		path: "/devices/computer/:id",
@@ -78,6 +106,22 @@ const routes = [
 	{
 		path: "/devices/penttidevices",
 		component: PenttiDevices
+	},
+	{
+		path: "/devices/arttudevices",
+		component: ArttuDevicesList
+	},
+	{
+		path: "/devices/penttidevices",
+		component: PenttiDevicesList
+	},
+	{
+		path: "/devices/keijodevices",
+		component: KeijoDevicesList
+	},
+	{
+		path: "/devices/severidevices",
+		component: SeveriDevicesList
 	},
 	{
 		path: "/devices/penttidevice/:id",

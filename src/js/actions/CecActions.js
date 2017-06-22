@@ -75,7 +75,7 @@ export default compose(
 		})
 	}),
 	graphql(gql`
-	mutation turnOnCecDevice($keijo: Int, $address: Int) {
+	mutation turnOnCecDevice($keijoId: Int, $address: Int) {
 		turnOnCecDevice(keijoId: $keijoId, address: $address)
 	}`, {
 		props: ({ ownProps, mutate }) => ({
