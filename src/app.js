@@ -13,9 +13,9 @@ import {
 	PageFrame
 } from "./js/PageFrame";
 
-import {
-    Layout
-} from "./js/layout";
+// import {
+//     Layout
+// } from "./js/layout";
 
 const app = express();
 
@@ -77,6 +77,7 @@ var output = {
 };
 
 if (development) {
+    console.log("development", development);
 	output.path = "/public/";
 	app.use(WebpackMiddleware(webpack({
         devtool: 'eval',
@@ -90,6 +91,7 @@ if (development) {
      }));
 	 ssr();
 } else {
+    console.log("production", development);
 	const compiler = webpack({
 		devtool: "cheap-module-source-map",
 		entry: entry,
@@ -105,15 +107,14 @@ if (development) {
 	});
 
 	compiler.run(function (err, stats) {
-         app.use("/api", graphQLHTTP({
-             schema, graphiql: false, pretty: false
-         }))
-         app.get("/js/app.js", function (req, res, next) {
-             res.sendFile(__dirname + '/public/app.js');
-         });
-         ssr();
+        console.log("bundle builed"); 
+        app.get("/app", function (req, res, next) {
+            console.log("get /js/app.js");
+            res.sendFile(__dirname + '/public/app.js');
+        });
+        //ssr();
     });
-	ssr();
+	//ssr();
 }
 
 function ssr() {

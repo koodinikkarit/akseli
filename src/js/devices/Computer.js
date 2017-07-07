@@ -19,9 +19,9 @@ import Form from "react-bootstrap/lib/Form";
 import Button from "react-bootstrap/lib/Button";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
-import {
-	LayoutStyles
-} from "../layout/";
+// import {
+// 	LayoutStyles
+// } from "../layout/";
 
 
 export class Computer extends React.Component {
