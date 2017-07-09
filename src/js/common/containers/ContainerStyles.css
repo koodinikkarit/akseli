@@ -1,0 +1,11 @@
+
+.ContainerList {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.ContainerListRectItem {
+    list-style-type: none;
+    transition:all 0.3s ease;
+}

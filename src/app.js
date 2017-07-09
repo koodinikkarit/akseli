@@ -9,9 +9,9 @@ import request from "request";
 import session from "express-session";
 
 
-import {
-	PageFrame
-} from "./js/PageFrame";
+import PageFrame from "./js/PageFrame";
+
+console.log("PageFrame is ", PageFrame);
 
 // import {
 //     Layout

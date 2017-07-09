@@ -9,11 +9,13 @@ import { BrowserRouter } from 'react-router-dom'
 import client from "./client";
 
 
+import Main from "./Main";
+
 import routes from "./routes";
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        {routes}
+        <Main />
     </ApolloProvider>,
     document.getElementById("root")
 );

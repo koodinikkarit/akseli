@@ -5,153 +5,68 @@ import {
   Link
 } from 'react-router-dom'
 
-import {
-	CecActions,
-	WolActions
-} from "./actions";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
 
-import {
-	ExecutorsList,
-	Executor
-} from "./executor";
+import RectBox from "./common/layout/RectBox";
+import RectBoxUnit from "./common/Layout/RectBoxUnit";
+import RectBoxInner from "./common/Layout/RectBoxInner";
 
-import {
-	Devices,
-	CecDevices,
-	TelnetDevices,
-	Computer,
-	Keijo,
-	PenttiDevices,
-	PenttiDevice
-} from "./devices";
+import ContainerList from "./common/containers/ContainerList";
+import ContainerListRectItem from "./common/containers/ContainerListRectItem";
 
-import {
-	ArttuDevicesList,
-	KeijoDevicesList,
-	PenttiDevicesList,
-	SeveriDevicesList
-} from "./ConnectedDevices"
+import ComputerList from "./specific/ComputerList";
+import EditComputer from "./Specific/EditComputer";
 
-import {
-	ComputersList,
-	DevicesList
-} from "./CreatedDevices";
+function com1() {
+    return (
+		<RectBoxUnit>
+			<RectBox onClick={e => {
+				console.log("CLiked");	
+			}}>
+				<RectBoxInner>
+        			Tykityskone
+				</RectBoxInner>
+			</RectBox>
+		</RectBoxUnit>
+    )
+}
+function com2() {
+    return (
+		<RectBoxUnit>
+			<RectBox>
+        		<h1>com2</h1>
+			</RectBox>
+		</RectBoxUnit>
+    )
+}
+function com3() {
+    return (
+		<RectBoxUnit>
+			<RectBox>
+        		<h1>com3</h1>
+			</RectBox>
+		</RectBoxUnit>
+    )
+}
 
-import {
-	FrontPage
-} from "./frontpage";
-
-import {
-	Timers,
-	WeeklyTimers
-} from "./timers";
-
-
-import {
-	ControlDevices,
-	Pentit
-} from "./controldevices";
-
-// Route config
-const routes = [
-	{
-		path: "/",
-		exact: true,
-		component: FrontPage,
-	},
-	{
-		path: "/actions/cecactions",
-		component: CecActions
-	},
-	{
-		path: "/actions/wolactions",
-		component: WolActions
-	},
-	{
-		path: "/controldevices/pentit",
-		component: Pentit
-	},
-	{
-		path: "/executors",
-		component: ExecutorsList
-	},
-	{
-		path: "/executor",
-		component: Executor
-	},
-	{
-		path: "/devices/CecDevices",
-		component: CecDevices
-	},
-	{
-		path: "/devices/keijo/:id",
-		component: Keijo
-	},
-	{
-		path: "/devices/TelnetDevices",
-		component: TelnetDevices
-	},
-	{
-		path: "/devices/computers",
-		component: ComputersList
-	},
-	{
-		path: "/devices/devices",
-		component: DevicesList
-	},
-	{
-		path: "/devices/computer/:id",
-		component: Computer
-	},
-	{
-		path: "/devices/penttidevices",
-		component: PenttiDevices
-	},
-	{
-		path: "/devices/arttudevices",
-		component: ArttuDevicesList
-	},
-	{
-		path: "/devices/penttidevices",
-		component: PenttiDevicesList
-	},
-	{
-		path: "/devices/keijodevices",
-		component: KeijoDevicesList
-	},
-	{
-		path: "/devices/severidevices",
-		component: SeveriDevicesList
-	},
-	{
-		path: "/devices/penttidevice/:id",
-		component: PenttiDevice
-	},
-	{
-		path: "/timers/weeklytimers",
-		component: Timers
-	},
-	{
-		path: "/controldevices",
-		component: ControlDevices
-	}
-];
-
-// wrap <Route> and use this everywhere instead, then when
-// sub routes are added to any route it'll work
-const RouteWithSubRoutes = (route) => (
-  <Route exact path={route.path} render={props => (
-    // pass the sub-routes down to keep nesting
-    <route.component {...props} routes={route.routes}/>
-  )}/>
-)
+console.log("computers", ComputerList)
 
 export default (
-	<Router>
-		<div>
-			{routes.map((route, i) => (
-        		<RouteWithSubRoutes key={i} {...route}/>
-    		))}
-		</div>
-	</Router>
+	<div>
+		<Grid>
+			<Row>
+				<Col md={6}>
+					<Route path="/computer" component={EditComputer} />
+				</Col>
+				<Col md={6}>
+					<Route path="/" component={com1} />
+					<Route path="/" component={com2} />
+					<Route path="/" component={com3} />
+					<Route path="/computers" component={ComputerList} />
+				</Col>
+			</Row>
+		</Grid>
+	</div>
 )
