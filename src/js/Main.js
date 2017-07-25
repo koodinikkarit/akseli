@@ -32,8 +32,16 @@ export default class Main extends React.Component {
                         </Navbar.Header>
                         <Nav>
                             <NavDropdown eventKey={1} title="Laitteet">
-                                <MenuItem eventKey={1.1} href="/devices/computers">Tietokoneet</MenuItem>
-                                <MenuItem eventKey={1.2} href="/devices/devices">Laitteet</MenuItem>
+                                <MenuItem eventKey={1.1}>
+                                    <Link to="/computers">
+                                        Tietokoneet
+                                    </Link>
+                                </MenuItem>
+                                <MenuItem eventKey={1.2}>
+                                    <Link to="/devices">
+                                        Laitteet
+                                    </Link>
+                                </MenuItem>
                             </NavDropdown>
                             <NavDropdown eventKey={2} title="Asetukset">
                             </NavDropdown>

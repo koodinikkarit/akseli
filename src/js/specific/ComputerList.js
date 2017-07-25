@@ -1,37 +1,56 @@
 import React from "react";
+import {
+	graphql,
+	compose
+} from "react-apollo";
+
+import ALL_COMPUTERS_QUERY from "./AllComputersQuery.graphql";
+
+import { Link } from 'react-router-dom'
 
 import ContainerList from "../common/containers/ContainerList";
 import ContainerListRectItem from "../common/containers/ContainerListRectItem";
 
-export default class ComputerList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            expanded: false
-        }
-    }
-    
-    render() {
-        return (
-            <ContainerList>
-                <ContainerListRectItem
-                    onClick={e => {
-                        this.setState({
-                            expanded: !this.state.expanded
-                        });
-                    }}
-                    expanded={this.state.expanded}>
-                    Tietokone
-                    {this.state.expanded &&
-                    <div>
-                        <h1>One</h1>
-                        <h1>Two</h1>
-                        <h1>Three</h1>
-                        <h1>Four</h1>
-                        <h1>Five</h1>
-                    </div>}
-                </ContainerListRectItem>
-            </ContainerList>
-        )
-    }
+export class ComputerList extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			expanded: false
+		}
+	}
+	
+	render() {
+
+		console.log("this.props", this.props);
+		return (
+			<div>
+			<button onClick={e => {
+				this.props.history.push("/createcomputer")
+			}}>
+				Lisää uusi tietokone
+			</button>
+			<ContainerList>
+				{this.props.computers.map(computer => (
+					<ContainerListRectItem id={computer.id}>
+						<Link to="computer">
+							{computer.name}
+						</Link>
+					</ContainerListRectItem>    
+				))}
+			</ContainerList>
+			</div>
+		)
+	}
 }
+
+export default compose(
+	graphql(ALL_COMPUTERS_QUERY, {
+		props: ({ data: { 
+			loading,
+			allComputers
+		}}) => ({
+			loading,
+			computers: !loading ? allComputers.computers : []
+		})
+	})
+)(ComputerList);
