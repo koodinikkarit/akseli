@@ -1,3 +1,5 @@
+# Akseli
+[![Build Status](https://travis-ci.org/koodinikkarit/akseli.svg?branch=master)](https://travis-ci.org/koodinikkarit/akseli)
 
 ### Environment variables
 
