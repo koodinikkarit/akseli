@@ -34,6 +34,11 @@ export class NavigationBar extends React.Component {
 								Laitteet
 							</Link>
 						</MenuItem>
+						<MenuItem eventKey={1.3}>
+							<Link to="/woldevices">
+								Wol
+							</Link>
+						</MenuItem>
 					</NavDropdown>
 					<NavDropdown eventKey={2} title="Asetukset">
 					</NavDropdown>

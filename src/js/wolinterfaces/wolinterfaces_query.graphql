@@ -1,0 +1,8 @@
+query wolInterfaces{
+	wolInterfaces { 
+		wolInterfaces {
+			id
+			mac
+		}
+	}
+}

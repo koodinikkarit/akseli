@@ -1,0 +1,6 @@
+query wolInterface($wolInterfaceId: ID) {
+	wolInterface(wolInterfaceId: $wolInterfaceId) {
+		id
+		mac
+	}
+}

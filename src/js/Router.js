@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import NavigationBar from "./NavigationBar";
+import Routes from "./Routes";
 
 export default class Main extends React.Component {
 	render() {
@@ -12,6 +13,7 @@ export default class Main extends React.Component {
 			<Router>
 				<div>
 					<NavigationBar />
+					<Routes />
 				</div>
 			</Router>
 		);

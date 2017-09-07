@@ -1,0 +1,6 @@
+mutation createWolInterface($mac: String) {
+	createWolInterface(mac: $mac) {
+		id
+		mac
+	}
+}

@@ -16,8 +16,9 @@ export default app => {
 		res.redirect(302, "/");
 	});
 
-	if (process.env.AKSELI_PETRI_IP && process.AKSELI_PETRI_PORT) {
-		app.use("/api", (err, res) => {
+	if (process.env.AKSELI_PETRI_IP && process.env.AKSELI_PETRI_PORT) {
+		console.log("petri env");
+		app.use("/api", (req, res) => {
 			Request.post(
 				`http://${process.env.AKSELI_PETRI_IP}:${process.env.AKSELI_PETRI_PORT}/`,
 				{
@@ -36,6 +37,12 @@ export default app => {
 				}
 			)
 		});
+	} else {
+		app.use("/api", (req, res) => {
+			console.log("500 service unavaivable");
+			res.writeHead(500);
+			res.end();
+		});
 	}
 
 	app.use((req, res) => {
@@ -45,6 +52,6 @@ export default app => {
 	});
 
 	app.listen(process.env.AKSELI_PORT || 11111, () => {
-		console.log("serveri on käynnissä");
+		console.log("Serveri kuuntelee", process.env.AKSELI_PORT || 11111);
 	});
 }
