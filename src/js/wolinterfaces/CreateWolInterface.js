@@ -55,7 +55,9 @@ export class CreateWolInterface extends React.Component {
 					<Button bsStyle="success"
 						onClick={() => {
 							this.props.createWolInterface(this.state.mac).then(() => {
-
+								if (this.props.onCreate) {
+									this.props.onCreate();
+								}
 							});
 						}}>
 						Tallenna

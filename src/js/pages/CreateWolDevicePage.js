@@ -14,7 +14,13 @@ export class CreateWoldevicePage extends React.Component {
 		return (
 			<Row>
 				<Col md={6}>
-					<CreateWolInterface />
+					<CreateWolInterface
+						onCreate={() => {
+							this.props.history.push("/woldevices");
+						}}
+						getCancelLinkPath={() => {
+							return "/woldevices";
+						}} />
 				</Col>
 				<Col md={6}>
 					<WolInterfacesSearch

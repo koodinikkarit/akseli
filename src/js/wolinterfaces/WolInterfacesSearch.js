@@ -15,9 +15,9 @@ export class WolInterfacesSearch extends React.Component {
 	render() {
 		return (
 			<RectBoxInner>
-				<AppendBottom>
+				{/*<AppendBottom>
 					<DelayTextInput />
-				</AppendBottom>
+				</AppendBottom>*/}
 				<WolInterfacesSearchResults
 					getItemLink={this.props.getItemLink} />
 			</RectBoxInner>

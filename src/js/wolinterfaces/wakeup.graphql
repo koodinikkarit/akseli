@@ -1,0 +1,3 @@
+mutation wakeup($wolInterfaceId: ID) {
+	wakeup(wolInterfaceId: $wolInterfaceId)
+}

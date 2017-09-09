@@ -15,12 +15,20 @@ export class EditWolDevicePage extends React.Component {
 		const {
 			wolInterfaceId
 		} = this.props.match.params;
-		console.log("wolInterfaceID is", wolInterfaceId);
 		return (
 			<Row>
 				<Col md={6}>
 					<EditWolInterface
-						wolInterfaceId={wolInterfaceId} />
+						wolInterfaceId={wolInterfaceId}
+						onSave={() => {
+							this.props.history.push("/woldevices");
+						}}
+						onRemove={() => {
+							this.props.history.push("/woldevices");
+						}}
+						getCancelLinkPath={() => {
+							return "/woldevices";
+						}} />
 				</Col>
 				<Col md={6}>
 					<WolInterfacesSearch

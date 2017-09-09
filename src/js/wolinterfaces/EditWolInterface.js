@@ -18,10 +18,12 @@ import Button from "react-bootstrap/lib/Button";
 import FormControl from "react-bootstrap/lib/FormControl";
 
 import WOL_INTERFACE_QUERY from "./wolinterface.graphql";
+import EDIT_WOL_INTERFACE_MUTATION from "./edit_wol_interface.graphql";
+import REMOVE_WOL_INTERFACE_MUTATION from "./remove_wol_interface.graphql";
 
 export class EditWolInterface extends React.Component {
 	state = {
-		mac: ""
+		mac: this.props.wolInterface ? this.props.wolInterface.mac : ""
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -33,6 +35,7 @@ export class EditWolInterface extends React.Component {
 	}
 
 	render() {
+		console.log("wolInterface", this.props.wolInterface);
 		return (
 			<RectBoxInner>
 				<AppendBottom>
@@ -57,14 +60,25 @@ export class EditWolInterface extends React.Component {
 				<AppendRight>
 					<Button bsStyle="danger"
 						onClick={() => {
-
+							this.props.removeWolInterface(this.props.wolInterface.id).then(() => {
+								if (this.props.onRemove) {
+									this.props.onRemove();
+								}
+							});
 						}}>
 						Poista
 					</Button>
 				</AppendRight>
 				<Button bsStyle="success"
 					onClick={() => {
-						
+						this.props.editWolInterface(
+							this.props.wolInterface.id,
+							this.state.mac
+						).then(() => {
+							if (this.props.onSave) {
+								this.props.onSave();
+							}
+						});
 					}}>
 					Tallenna
 				</Button>
@@ -90,6 +104,30 @@ export default compose(
 		}) => ({
 			loadingWolInterface: loading,
 			wolInterface
+		})
+	}),
+	graphql(EDIT_WOL_INTERFACE_MUTATION, {
+		props: ({ mutate }) => ({
+			editWolInterface: (
+				wolInterfaceId,
+				mac
+			) => mutate({
+				variables: {
+					wolInterfaceId,
+					mac
+				}
+			})
+		})
+	}),
+	graphql(REMOVE_WOL_INTERFACE_MUTATION, {
+		props: ({ mutate }) => ({
+			removeWolInterface: (
+				wolInterfaceId
+			) => mutate({
+				variables: {
+					wolInterfaceId
+				}
+			})
 		})
 	})
 )(EditWolInterface);
