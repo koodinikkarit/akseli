@@ -1,0 +1,3 @@
+mutation removeComputer($computerId: ID) {
+	removeComputer(computerId: $computerId)
+}

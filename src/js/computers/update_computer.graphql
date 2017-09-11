@@ -1,0 +1,6 @@
+mutation updateComputer($params: UpdateComputerInput) {
+	updateComputer(params: $params) {
+		id
+		name
+	}
+}

@@ -5,7 +5,7 @@ import {
 
 import {
 	RectBoxInner,
-	AppendBottom
+	//AppendBottom
 } from "../common/layout";
 
 import DelayTextInput from "../common/DelayTextInput";
