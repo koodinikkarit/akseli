@@ -17,7 +17,6 @@ import Button from "react-bootstrap/lib/Button";
 import Clearfix from "react-bootstrap/lib/Clearfix";
 
 import WOL_INTERFACES_QUERY from "./wolinterfaces_query.graphql";
-import WAKEUP_MUTATION from "./wakeup.graphql";
 
 export class WolInterfacesSearchResults extends React.Component {
 	render() {
@@ -32,7 +31,7 @@ export class WolInterfacesSearchResults extends React.Component {
 								}}>
 									<Link to={this.props.getItemLink ? this.props.getItemLink(p.id) : ""}>
 										<div>
-											{p.mac}
+											{p.ip}:{p.port}
 										</div>
 									</Link>
 								</div>
@@ -69,22 +68,14 @@ export default compose(
 		props: ({
 			data: {
 				loading,
-				wolInterfaces
+				wolInterfacesConnection
 			}
 		}) => {
 			return {
 				wolInterfacesLoading: loading,
-				wolInterfaces: wolInterfaces ? wolInterfaces.wolInterfaces : []
+				wolInterfaces: wolInterfacesConnection ? wolInterfacesConnection.wolInterfaces : []
 			};
 		}
 	}),
-	graphql(WAKEUP_MUTATION, {
-		props: ({ mutate }) => ({
-			wakeup: (wolInterfaceId) => mutate({
-				variables: {
-					wolInterfaceId
-				}
-			})
-		})
-	})
+
 )(WolInterfacesSearchResults);

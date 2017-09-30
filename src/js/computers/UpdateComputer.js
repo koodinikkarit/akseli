@@ -14,6 +14,8 @@ import {
 	AppendRight
 } from "../common/layout";
 
+import WolInterfacesSelect from "../wolinterfaces/WolInterfacesSelect";
+
 import Button from "react-bootstrap/lib/Button";
 import FormControl from "react-bootstrap/lib/FormControl";
 
@@ -23,13 +25,19 @@ import REMOVE_COMPUTER_MUTATION from "./remove_computer.graphql";
 
 export class UpdateComputers extends React.Component {
 	state = {
-		name: this.props.computer ? this.props.computer.name : ""
-	}
+		name: this.props.computer ? this.props.computer.name : "",
+		ip: this.props.computer ? this.props.computer.ip : "",
+		mac: this.props.computer ? this.props.computer.mac : "",
+		wolInterfaceId: this.props.computer ? this.props.computer.wolInterfaceId : ""
+	};
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.computer) {
 			this.setState({
-				name: nextProps.computer.name
+				name: nextProps.computer.name,
+				ip: nextProps.computer.ip,
+				mac: nextProps.computer.mac,
+				wolInterfaceId: nextProps.computer.wolInterfaceId
 			});
 		}
 	}
@@ -73,6 +81,18 @@ export class UpdateComputers extends React.Component {
 							});
 						}} />
 				</AppendBottom>
+				<AppendBottom>
+					<label>
+						Wol rajapinta
+					</label>
+					<WolInterfacesSelect
+						value={this.state.wolInterfaceId}
+						onChange={value => {
+							this.setState({
+								wolInterfaceId: value
+							});
+						}} />
+				</AppendBottom>
 				<AppendRight>
 					<Link to={this.props.getCancelLinkPath ?
 						this.props.getCancelLinkPath() : ""}>
@@ -97,7 +117,10 @@ export class UpdateComputers extends React.Component {
 					onClick={() => {
 						this.props.updateComputer({
 							computerId: this.props.computer.id,
-							name: this.state.name
+							name: this.state.name,
+							ip: this.state.ip,
+							mac: this.state.mac,
+							wolInterfaceId: this.state.wolInterfaceId
 						}).then(() => {
 							if (this.props.onSave) {
 								this.props.onSave();
@@ -114,15 +137,9 @@ export class UpdateComputers extends React.Component {
 export default compose(
 	graphql(UPDATE_COMPUTER_MUTATION, {
 		props: ({ mutate }) => ({
-			updateComputer: ({
-				computerId,
-				name
-			}) => mutate({
+			updateComputer: (params) => mutate({
 				variables: {
-					params: {
-						computerId,
-						name
-					}
+					params
 				}
 			})
 		})
@@ -131,7 +148,9 @@ export default compose(
 		props: ({ mutate }) => ({
 			removeComputer: (computerId) => mutate({
 				variables: {
-					computerId
+					params: {
+						computerId
+					}
 				}
 			})
 		})

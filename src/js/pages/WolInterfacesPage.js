@@ -17,7 +17,7 @@ import {
 	AppendBottom
 } from "../common/layout";
 
-export class WolDevicesPage extends React.Component {
+export class WolInterfaces extends React.Component {
 	render() {
 		return(
 			<Row>
@@ -31,7 +31,7 @@ export class WolDevicesPage extends React.Component {
 					</AppendBottom>
 					<WolInterfacesSearch
 						getItemLink={id => {
-							return "/editwoldevice/" + id;
+							return "/updatewolinterface/" + id;
 						}} />
 				</Col>
 			</Row>
@@ -41,4 +41,4 @@ export class WolDevicesPage extends React.Component {
 
 export default compose(
 
-)(WolDevicesPage);
+)(WolInterfaces);

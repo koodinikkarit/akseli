@@ -25,7 +25,8 @@ export class CreateWolInterface extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			mac: ""
+			ip: "",
+			port: ""
 		};
 	}
 
@@ -34,13 +35,25 @@ export class CreateWolInterface extends React.Component {
 			<RectBoxInner>
 				<AppendBottom>
 					<label>
-						Mac osoite
+						ip
 					</label>
 					<FormControl type="text"
-						value={this.state.mac}
+						value={this.state.ip}
 						onChange={e => {
 							this.setState({
-								mac: e.target.value
+								ip: e.target.value
+							});
+						}} />
+				</AppendBottom>
+				<AppendBottom>
+					<label>
+						port
+					</label>
+					<FormControl type="text" bsSize="small"
+						value={this.state.port}
+						onChange={e => {
+							this.setState({
+								port: e.target.value
 							});
 						}} />
 				</AppendBottom>
@@ -54,7 +67,10 @@ export class CreateWolInterface extends React.Component {
 					</AppendRight>
 					<Button bsStyle="success"
 						onClick={() => {
-							this.props.createWolInterface(this.state.mac).then(() => {
+							this.props.createWolInterface({
+								ip: this.state.ip,
+								port: this.state.port
+							}).then(() => {
 								if (this.props.onCreate) {
 									this.props.onCreate();
 								}
@@ -71,9 +87,9 @@ export class CreateWolInterface extends React.Component {
 export default compose(
 	graphql(CREATE_WOL_INTERFACE_MUTATION, {
 		props: ({ mutate }) => ({
-			createWolInterface: (mac) => mutate({
+			createWolInterface: (params) => mutate({
 				variables: {
-					mac
+					params
 				}
 			})
 		})

@@ -1,6 +1,9 @@
 query computer($computerId: ID) {
 	computer(computerId: $computerId) {
 		id 
-		name 
+		name
+		ip
+		mac,
+		wolInterfaceId
 	}
 }

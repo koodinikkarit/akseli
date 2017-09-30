@@ -1,3 +1,5 @@
-mutation removeComputer($computerId: ID) {
-	removeComputer(computerId: $computerId)
+mutation removeComputer($params: RemoveComputerInput) {
+	removeComputer(params: $params) {
+		success
+	}
 }

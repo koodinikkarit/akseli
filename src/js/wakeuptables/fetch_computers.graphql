@@ -1,0 +1,13 @@
+query {
+	computersConnection: searchComputers {
+		computers {
+			id
+			name
+			ip 
+			mac
+			awake {
+				success
+			}
+		}
+	}
+}

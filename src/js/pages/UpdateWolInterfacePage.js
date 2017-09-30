@@ -1,16 +1,15 @@
 import React from "react";
 import {
-	compose,
-	graphql
+	compose
 } from "react-apollo";
 
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 
-import EditWolInterface from "../wolinterfaces/EditWolInterface";
+import UpdateWolInterface from "../wolinterfaces/UpdateWolInterface";
 import WolInterfacesSearch from "../wolinterfaces/WolInterfacesSearch";
 
-export class EditWolDevicePage extends React.Component {
+export class UpdateWolInterfacePage extends React.Component {
 	render() {
 		const {
 			wolInterfaceId
@@ -18,22 +17,22 @@ export class EditWolDevicePage extends React.Component {
 		return (
 			<Row>
 				<Col md={6}>
-					<EditWolInterface
+					<UpdateWolInterface
 						wolInterfaceId={wolInterfaceId}
 						onSave={() => {
-							this.props.history.push("/woldevices");
+							this.props.history.push("/wolinterfaces");
 						}}
 						onRemove={() => {
-							this.props.history.push("/woldevices");
+							this.props.history.push("/wolinterfaces");
 						}}
 						getCancelLinkPath={() => {
-							return "/woldevices";
+							return "/wolinterfaces";
 						}} />
 				</Col>
 				<Col md={6}>
 					<WolInterfacesSearch
 						getItemLink={id => {
-							return "/editwoldevice/" + id;
+							return "/updatewoldevice/" + id;
 						}} />
 				</Col>
 			</Row>
@@ -43,4 +42,4 @@ export class EditWolDevicePage extends React.Component {
 
 export default compose(
 
-)(EditWolDevicePage);
+)(UpdateWolInterfacePage);

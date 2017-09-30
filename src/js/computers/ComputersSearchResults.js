@@ -28,7 +28,7 @@ export class ComputersSearchResults extends React.Component {
 					<ListItem key={p.id}>
 						<Link to={this.props.getItemLink ?
 							this.props.getItemLink(p.id) : ""}>
-							{p.name}
+							{p.name || "Ei nimeä"}
 						</Link>
 					</ListItem>
 				))}

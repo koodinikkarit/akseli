@@ -1,0 +1,5 @@
+mutation wakeup($params: WakeupInput) {
+	wakeup(params: $params) {
+		success
+	}
+}

@@ -1,6 +1,0 @@
-mutation editWolInterface($wolInterfaceId: ID, $mac: String) {
-	editWolInterface(wolInterfaceId: $wolInterfaceId, mac: $mac) {
-		id 
-		mac
-	}
-}

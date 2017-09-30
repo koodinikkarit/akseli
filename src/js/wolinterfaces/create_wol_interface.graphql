@@ -1,6 +1,9 @@
-mutation createWolInterface($mac: String) {
-	createWolInterface(mac: $mac) {
-		id
-		mac
+mutation createWolInterface($params: CreateWolInterfaceInput) {
+	createWolInterface(params: $params) {
+		wolInterface {
+			id
+			ip 
+			port
+		}
 	}
 }

@@ -1,6 +1,8 @@
 mutation createComputer($params: CreateComputerInput) {
 	createComputer(params: $params) {
-		id
-		name
+		computer {
+			id
+			name
+		}
 	}
 }

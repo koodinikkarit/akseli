@@ -23,6 +23,9 @@ export class NavigationBar extends React.Component {
 					</Navbar.Brand>
 				</Navbar.Header>
 				<Nav>
+					<Nav>
+						<NavItem eventKey={1} href="/wakeuptable">Wakeup</NavItem>
+					</Nav>
 					<NavDropdown eventKey={1} title="Laitteet">
 						<MenuItem eventKey={1.1}>
 							<Link to="/computers">
@@ -41,6 +44,11 @@ export class NavigationBar extends React.Component {
 						</MenuItem>
 					</NavDropdown>
 					<NavDropdown eventKey={2} title="Asetukset">
+						<MenuItem eventKey={2.1}>
+							<Link to="/wolinterfaces">
+								Wol rajapinnat
+							</Link>
+						</MenuItem>
 					</NavDropdown>
 				</Nav>
 				<Nav pullRight>

@@ -18,35 +18,49 @@ import Button from "react-bootstrap/lib/Button";
 import FormControl from "react-bootstrap/lib/FormControl";
 
 import WOL_INTERFACE_QUERY from "./wolinterface.graphql";
-import EDIT_WOL_INTERFACE_MUTATION from "./edit_wol_interface.graphql";
+import UPDATE_WOL_INTERFACE_MUTATION from "./update_wol_interface.graphql";
 import REMOVE_WOL_INTERFACE_MUTATION from "./remove_wol_interface.graphql";
 
-export class EditWolInterface extends React.Component {
+export class UpdateWolInterface extends React.Component {
 	state = {
-		mac: this.props.wolInterface ? this.props.wolInterface.mac : ""
-	}
+		ip: this.props.wolInterface ? this.props.wolInterface.ip : "",
+		port: this.props.wolInterface ? this.props.wolInterface.port : "",
+		wolInterfaceId: this.props.wolInterfaceId ? this.props.wolInterfaceId : ""
+	};
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.wolInterface) {
 			this.setState({
-				mac: nextProps.wolInterface.mac
+				ip: nextProps.wolInterface.ip,
+				port: nextProps.wolInterface.port
 			});
 		}
 	}
 
 	render() {
-		console.log("wolInterface", this.props.wolInterface);
 		return (
 			<RectBoxInner>
 				<AppendBottom>
 					<label>
-						Mac osoite
+						ip
 					</label>
 					<FormControl type="text"
-						value={this.state.mac}
+						value={this.state.ip}
 						onChange={e => {
 							this.setState({
-								mac: e.target.value
+								ip: e.target.value
+							});
+						}} />
+				</AppendBottom>
+				<AppendBottom>
+					<label>
+						port
+					</label>
+					<FormControl type="text" bsSize="small"
+						value={this.state.port}
+						onChange={e => {
+							this.setState({
+								port: e.target.value
 							});
 						}} />
 				</AppendBottom>
@@ -71,10 +85,11 @@ export class EditWolInterface extends React.Component {
 				</AppendRight>
 				<Button bsStyle="success"
 					onClick={() => {
-						this.props.editWolInterface(
-							this.props.wolInterface.id,
-							this.state.mac
-						).then(() => {
+						this.props.updateWolInterface({
+							wolInterfaceId: this.props.wolInterface.id,
+							ip: this.state.ip,
+							port: this.state.port	
+						}).then(() => {
 							if (this.props.onSave) {
 								this.props.onSave();
 							}
@@ -106,28 +121,24 @@ export default compose(
 			wolInterface
 		})
 	}),
-	graphql(EDIT_WOL_INTERFACE_MUTATION, {
+	graphql(UPDATE_WOL_INTERFACE_MUTATION, {
 		props: ({ mutate }) => ({
-			editWolInterface: (
-				wolInterfaceId,
-				mac
-			) => mutate({
+			updateWolInterface: (params) => mutate({
 				variables: {
-					wolInterfaceId,
-					mac
+					params
 				}
 			})
 		})
 	}),
 	graphql(REMOVE_WOL_INTERFACE_MUTATION, {
 		props: ({ mutate }) => ({
-			removeWolInterface: (
-				wolInterfaceId
-			) => mutate({
+			removeWolInterface: (wolInterfaceId) => mutate({
 				variables: {
-					wolInterfaceId
+					params: {
+						wolInterfaceId
+					}
 				}
 			})
 		})
 	})
-)(EditWolInterface);
+)(UpdateWolInterface);

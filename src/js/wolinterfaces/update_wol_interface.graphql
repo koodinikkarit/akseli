@@ -1,0 +1,9 @@
+mutation updateWolInterface($params: UpdateWolInterfaceInput) {
+	updateWolInterface(params: $params) {
+		wolInterface {
+			id 
+			ip
+			port
+		}
+	}
+}

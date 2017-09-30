@@ -1,3 +1,5 @@
-mutation removeWolInterface($wolInterfaceId: ID) {
-	removeWolInterface(wolInterfaceId: $wolInterfaceId)
+mutation removeWolInterface($params: RemoveWolInterfaceInput) {
+	removeWolInterface(params: $params) {
+		success
+	}
 }

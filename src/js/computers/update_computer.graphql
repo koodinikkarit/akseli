@@ -1,6 +1,11 @@
 mutation updateComputer($params: UpdateComputerInput) {
 	updateComputer(params: $params) {
-		id
-		name
+		computer {
+			id
+			name
+			ip
+			mac,
+			wolInterfaceId
+		}
 	}
 }

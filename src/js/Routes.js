@@ -11,8 +11,11 @@ import UpdateComputerPage from "./pages/UpdateComputerPage";
 import ComputersSearchPage from "./pages/ComputersSearchPage";
 
 import CreateWolDevicePage from "./pages/CreateWolDevicePage";
-import EditWolDevicePage from "./pages/EditWoldevicePage";
-import WolDevicesPage from "./pages/WolDevicesPage";
+import UpdateWolInterfacePage from "./pages/UpdateWolInterfacePage";
+import WolInterfacesPage from "./pages/WolInterfacesPage";
+
+import WakeupTablePage from "./pages/WakeupTablePage";
+
 import NotFoundPage from "./pages/NotFoundPage";
 
 export default class Routes extends React.Component {
@@ -24,8 +27,9 @@ export default class Routes extends React.Component {
 					<Route path="/updatecomputer/:computerId" component={UpdateComputerPage} />
 					<Route path="/computers" component={ComputersSearchPage} />
 					<Route path="/createwoldevice" component={CreateWolDevicePage} />
-					<Route path="/editwoldevice/:wolInterfaceId" component={EditWolDevicePage} />
-					<Route path="/woldevices" component={WolDevicesPage} />
+					<Route path="/updatewolinterface/:wolInterfaceId" component={UpdateWolInterfacePage} />
+					<Route path="/wolinterfaces" component={WolInterfacesPage} />
+					<Route path="/wakeuptable" component={WakeupTablePage} />
 					<Route component={NotFoundPage} />
 				</Switch>
 			</Grid>

@@ -68,13 +68,9 @@ export class CreateComputers extends React.Component {
 export default compose(
 	graphql(CREATE_COMPUTER_MUTATION, {
 		props: ({ mutate }) => ({
-			createComputer: ({
-				name
-			}) => mutate({
+			createComputer: (params) => mutate({
 				variables: {
-					params: {
-						name
-					}
+					params: params
 				}
 			})
 		})
