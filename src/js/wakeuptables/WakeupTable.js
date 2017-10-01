@@ -12,7 +12,6 @@ import WAKEUP from "./wakeup.graphql";
 
 export class WakeupTable extends React.Component {
 	render() {
-		console.log("computers", this.props.computers);
 		return (
 			<div style={{
 				overflowX: "auto"
@@ -47,7 +46,7 @@ export class WakeupTable extends React.Component {
 									{computer.mac}
 								</td>
 								<td>
-									{computer.awake.success === true ?
+									{computer.awake === true ?
 										<span style={{ color: "green" }}>Online</span> : 
 										<span style={{ color: "red" }}>Offline</span>}
 								</td>

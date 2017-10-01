@@ -17,7 +17,6 @@ export default app => {
 	});
 
 	if (process.env.AKSELI_PETRI_IP && process.env.AKSELI_PETRI_PORT) {
-		console.log("petri env");
 		app.use("/api", (req, res) => {
 			Request.post(
 				`http://${process.env.AKSELI_PETRI_IP}:${process.env.AKSELI_PETRI_PORT}/`,
