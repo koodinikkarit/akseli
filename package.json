@@ -1,6 +1,6 @@
 {
 	"name": "akseli",
-	"version": "0.0.4",
+	"version": "0.1.0",
 	"scripts": {
 		"start": "npm run build-production && cd dist && node ./akseli.js",
 		"docker-start": "cd dist && node ./akseli.js",
