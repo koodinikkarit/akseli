@@ -78,7 +78,10 @@ export default compose(
 			}
 		}) => ({
 			computers: computersConnection ? computersConnection.computers : []
-		})
+		}),
+		options: {
+			pollInterval: 5000
+		}
 	}),
 	graphql(WAKEUP, {
 		props: ({ mutate }) => ({
