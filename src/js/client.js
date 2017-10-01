@@ -8,6 +8,9 @@ let nextId = 1;
 export default new ApolloClient({
 	dataIdFromObject: o => `${o.__typename}-${o.id ? o.id : nextId++},`,
 	networkInterface: createNetworkInterface({ 
-		uri: `http://${window.location.hostname}:${window.location.port}/api` 
+		uri: `http://${window.location.hostname}:${window.location.port}/api`,
+		opts: {
+			credentials: "same-origin"
+		}
 	})
 });
