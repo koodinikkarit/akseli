@@ -6,6 +6,7 @@ query {
 			ip 
 			mac
 			awake
+			wolInterfaceId
 		}
 	}
 }

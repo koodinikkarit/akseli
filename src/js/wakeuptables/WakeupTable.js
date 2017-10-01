@@ -51,6 +51,7 @@ export class WakeupTable extends React.Component {
 										<span style={{ color: "red" }}>Offline</span>}
 								</td>
 								<td>
+									{computer.wolInterfaceId != "0" &&
 									<Button bsStyle="success"
 										onClick={() => {
 											this.props.wakeup(computer.id).then(() => {
@@ -58,7 +59,7 @@ export class WakeupTable extends React.Component {
 											});
 										}}>
 										Herätä
-									</Button>
+									</Button>}
 								</td>
 							</tr>
 						))}
