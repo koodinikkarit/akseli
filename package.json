@@ -1,6 +1,6 @@
 {
 	"name": "akseli",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"scripts": {
 		"start": "npm run build-production && cd dist && node ./akseli.js",
 		"docker-start": "cd dist && node ./akseli.js",
@@ -45,6 +45,8 @@
 		"eslint-plugin-import": "2.7.0",
 		"eslint-plugin-jest": "20.0.3",
 		"eslint-plugin-react": "^7.3.0",
-		"webpack-dev-middleware": "1.10.2"
+		"webpack-dev-middleware": "1.10.2",
+		"grunt": "^1.0.1",
+		"grunt-bump": "^0.8.0"
 	}
 }
