@@ -1,15 +1,16 @@
-language: node_js
-node_js:
-  "7"
-install:
-  npm install
+sudo: enabled
+
+os:
+  - linux
+
+before_script:
+  - chmod +x ./linux/*.sh
 
 script:
-  - npm run build-production
-
-after_success:
+  - docker build -t $DOCKER_ID_USER/akseli:$TRAVIS_BRANCH-$TRAVIS_COMMIT .
   - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
-  - export TAG=${TRAVIS_TAG:-latest}
-  - docker build -t $DOCKER_ID_USER/akseli .
-  - docker tag $DOCKER_ID_USER/akseli $DOCKER_ID_USER/akseli:$TAG
   - docker push $DOCKER_ID_USER/akseli
+  - ./linux/install_dependencies.sh
+  - ./linux/setup_kubectl.sh
+  - ./linux/install_tiller.sh
+  - ./linux/helm_upgrade.sh

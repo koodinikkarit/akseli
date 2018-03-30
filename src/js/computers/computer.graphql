@@ -1,9 +1,0 @@
-query computer($computerId: ID) {
-	computer(computerId: $computerId) {
-		id 
-		name
-		ip
-		mac,
-		wolInterfaceId
-	}
-}

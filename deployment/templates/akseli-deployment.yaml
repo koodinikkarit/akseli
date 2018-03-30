@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: akseli
+  labels:
+    app: akseli
+spec:
+  template:
+    metadata:
+      labels:
+        app: akseli
+    spec:
+      containers:
+        - name: akseli-container
+          image: "{{ .Values.akseliImage }}"
+          ports:
+            - containerPort: 80

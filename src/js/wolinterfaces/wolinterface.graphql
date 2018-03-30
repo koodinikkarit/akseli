@@ -1,7 +1,0 @@
-query wolInterface($wolInterfaceId: ID) {
-	wolInterface(wolInterfaceId: $wolInterfaceId) {
-		id
-		ip
-		port
-	}
-}

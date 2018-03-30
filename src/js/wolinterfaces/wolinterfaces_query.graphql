@@ -1,9 +1,0 @@
-query searchWolInterfaces{
-	wolInterfacesConnection: searchWolInterfaces { 
-		wolInterfaces {
-			id
-			ip
-			port
-		}
-	}
-}

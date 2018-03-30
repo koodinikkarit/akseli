@@ -1,9 +1,0 @@
-
-mutation createComputer($params: CreateComputerInput) {
-	createComputer(params: $params) {
-		computer {
-			id
-			name
-		}
-	}
-}

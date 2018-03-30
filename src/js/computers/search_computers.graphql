@@ -1,8 +1,0 @@
-query searchComputers($params: SearchComputersInput) {
-	computersConnection: searchComputers(params: $params) {
-		computers {
-			id
-			name
-		}
-	}
-}

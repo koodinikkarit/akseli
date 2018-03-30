@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for akseli
+name: akseli
+version: 0.1.0

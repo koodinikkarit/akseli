@@ -1,5 +1,0 @@
-mutation removeComputer($params: RemoveComputerInput) {
-	removeComputer(params: $params) {
-		success
-	}
-}

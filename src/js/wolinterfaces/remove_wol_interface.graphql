@@ -1,5 +1,0 @@
-mutation removeWolInterface($params: RemoveWolInterfaceInput) {
-	removeWolInterface(params: $params) {
-		success
-	}
-}
